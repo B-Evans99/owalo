@@ -10,6 +10,11 @@ try:
     totals = {}
 
     for line in read:
+        if(" " not in totals):
+            totals[" "] = {}
+        if(line[0] not in totals[" "]):
+            totals[" "][line[0]] = 0
+        totals[" "][line[0]] += 1
         for i in range(len(line)-2):
             if(line[i] not in totals):
                 totals[line[i]] = {}
