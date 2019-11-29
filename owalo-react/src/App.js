@@ -118,21 +118,23 @@ function App() {
   let [mix, setMix] = useState(setup());
 
   return (
-    <div className="App">
-      {title}
-      {Object.keys(mix).map((flavour, i) => {
-        return (
-          <Bar key={i} name={flavour} val={mix[flavour]} setMix={setMix} />
-        );
-      })}
+    <div>
+      <div className="App">
+        {Object.keys(mix).map((flavour, i) => {
+          return (
+            <Bar key={i} name={flavour} val={mix[flavour]} setMix={setMix} />
+          );
+        })}
 
-      <button
-        onClick={() => {
-          setTitle(getProbs(mix));
-        }}
-      >
-        MAKE A WORD
-      </button>
+        <button
+          onClick={() => {
+            setTitle(getProbs(mix));
+          }}
+        >
+          MAKE A WORD
+        </button>
+      </div>
+      <h1>{title}</h1>
     </div>
   );
 }
