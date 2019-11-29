@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 
@@ -117,6 +117,8 @@ function App() {
 
   let [mix, setMix] = useState(setup());
 
+  let [tag, setTag] = useState("");
+
   return (
     <div>
       <div className="App">
@@ -128,13 +130,27 @@ function App() {
 
         <button
           onClick={() => {
-            setTitle(getProbs(mix));
+            setTitle(()=>{
+              
+              let title = getProbs(mix)
+              let tags = require("./tags.json");
+
+            let newTag = tags[Math.floor(tags.length * Math.random())];
+            newTag = newTag.replace("TK",title[0] + title.slice(1).toLowerCase());
+
+            setTag(newTag);
+
+            console.log(tag);
+            return title;
+            });
+            
           }}
         >
           MAKE A WORD
         </button>
       </div>
       <h1>{title}</h1>
+      <h2>{tag}</h2>
     </div>
   );
 }
