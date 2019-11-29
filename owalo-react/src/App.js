@@ -12,8 +12,6 @@ function shuffle(array) {
 }
 
 let getNext = (rot, probDict) => {
-  console.log("GIVVING TO THE GET NEXT " + JSON.stringify(probDict));
-
   let keys = Object.keys(probDict);
   shuffle(keys);
   if (keys.includes(" ")) {
@@ -62,8 +60,6 @@ let getProbs = mix => {
   Object.keys(mix).forEach(key => {
     total += parseInt(mix[key]);
   });
-
-  console.log("TOTAL " + total);
 
   Object.keys(mix).forEach(key => {
     let add = require("./" + key + "Flavour.json");
@@ -120,7 +116,6 @@ function App() {
   let [title, setTitle] = useState("");
 
   let [mix, setMix] = useState(setup());
-  console.log(JSON.stringify(mix));
 
   return (
     <div className="App">
