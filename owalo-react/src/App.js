@@ -91,13 +91,14 @@ let setup = () => {
 
 let Bar = ({ name, val, setMix }) => {
   return (
-    <div>
-      {name}
+    <div className="flavourBox">
+      <span className="flavourName">{name}</span>
       <input
+        className="slider"
         step="2"
         type="range"
         min="1"
-        max="100"
+        max="99"
         value={val}
         onChange={e => {
           let newVal = e.target.value;
@@ -120,8 +121,13 @@ function App() {
   let [tag, setTag] = useState("");
 
   return (
-    <div>
+    <div className="holder">
       <div className="App">
+        <h1>{title}</h1>
+        <h2 id="tagline">{tag}</h2>
+      </div>
+
+      <div className="touchBox">
         {Object.keys(mix).map((flavour, i) => {
           return (
             <Bar key={i} name={flavour} val={mix[flavour]} setMix={setMix} />
@@ -129,28 +135,33 @@ function App() {
         })}
 
         <button
-          onClick={() => {
-            setTitle(()=>{
-              
-              let title = getProbs(mix)
+          onClick={e => {
+            setTitle(() => {
+              let title = getProbs(mix);
               let tags = require("./tags.json");
 
-            let newTag = tags[Math.floor(tags.length * Math.random())];
-            newTag = newTag.replace("TK",title[0] + title.slice(1).toLowerCase());
+              let newTag = tags[Math.floor(tags.length * Math.random())];
+              newTag = newTag.replace(
+                "TK",
+                title[0] + title.slice(1).toLowerCase()
+              );
 
-            setTag(newTag);
+              setTag(newTag);
 
-            console.log(tag);
-            return title;
+              let fade = document.getElementById("tagline");
+              fade.style.animation = "none";
+              setTimeout(() => {
+                fade.style.animation = "";
+              }, 10);
+
+              console.log(tag);
+              return title;
             });
-            
           }}
         >
           MAKE A WORD
         </button>
       </div>
-      <h1>{title}</h1>
-      <h2>{tag}</h2>
     </div>
   );
 }
