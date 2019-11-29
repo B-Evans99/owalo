@@ -114,6 +114,10 @@ h2 {
   transition: 0.2s ease-in-out;
 }
 
+.slider::-webkit-slider-thumb {
+  transition: 0.3s ease-in-out;
+}
+
 .lowActivation::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
