@@ -94,7 +94,15 @@ let Bar = ({ name, val, setMix }) => {
     <div className="flavourBox">
       <span className="flavourName">{name}</span>
       <input
-        className="slider"
+        className={
+          val > 90
+            ? "slider fullActivation"
+            : val > 40
+            ? "slider highActivation"
+            : val > 12
+            ? "slider midActivation"
+            : "slider lowActivation"
+        }
         step="2"
         type="range"
         min="1"
