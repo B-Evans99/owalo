@@ -54,77 +54,28 @@ let getWord = probDict => {
   return retStr;
 };
 
-let getProbs = (f1, f2, f3, f4, f5, f6) => {
-  let probDict1 = require("./irishFlavour.json");
-  let probDict2 = require("./indianFlavour.json");
-  let probDict3 = require("./italianFlavour.json");
-  let probDict4 = require("./dutchFlavour.json");
-  let probDict5 = require("./polishFlavour.json");
-  let probDict6 = require("./russianFlavour.json");
-
+let getProbs = mix => {
   let probDict = {};
 
-  f1 = Math.floor(parseInt(f1 - 1));
-  f2 = Math.floor(parseInt(f2 - 1));
-  f3 = Math.floor(parseInt(f3 - 1));
-  f4 = Math.floor(parseInt(f4 - 1));
-  f5 = Math.floor(parseInt(f5 - 1));
-  f6 = Math.floor(parseInt(f6 - 1));
+  let total = 0;
 
-  let total = f1 + f2 + f3 + f4 + f5 + f6;
-
-  f1 = f1 / total;
-  f2 = f2 / total;
-  f3 = f3 / total;
-  f4 = f4 / total;
-  f5 = f5 / total;
-  f6 = f6 / total;
-
-  Object.keys(probDict1).forEach(key => {
-    if (!Object.keys(probDict).includes(key)) probDict[key] = {};
-    Object.keys(probDict1[key]).forEach(k => {
-      if (!Object.keys(probDict[key]).includes(k)) probDict[key][k] = 0;
-      probDict[key][k] += probDict1[key][k] * f1;
-    });
+  Object.keys(mix).forEach(key => {
+    total += parseInt(mix[key]);
   });
 
-  Object.keys(probDict2).forEach(key => {
-    if (!Object.keys(probDict).includes(key)) probDict[key] = {};
-    Object.keys(probDict2[key]).forEach(k => {
-      if (!Object.keys(probDict[key]).includes(k)) probDict[key][k] = 0;
-      probDict[key][k] += probDict2[key][k] * f2;
-    });
-  });
+  console.log("TOTAL " + total);
 
-  Object.keys(probDict3).forEach(key => {
-    if (!Object.keys(probDict).includes(key)) probDict[key] = {};
-    Object.keys(probDict3[key]).forEach(k => {
-      if (!Object.keys(probDict[key]).includes(k)) probDict[key][k] = 0;
-      probDict[key][k] += probDict3[key][k] * f3;
-    });
-  });
+  Object.keys(mix).forEach(key => {
+    let add = require("./" + key + "Flavour.json");
+    let weight = Math.floor(parseInt(mix[key] - 1));
+    weight = weight / total;
 
-  Object.keys(probDict4).forEach(key => {
-    if (!Object.keys(probDict).includes(key)) probDict[key] = {};
-    Object.keys(probDict4[key]).forEach(k => {
-      if (!Object.keys(probDict[key]).includes(k)) probDict[key][k] = 0;
-      probDict[key][k] += probDict4[key][k] * f4;
-    });
-  });
-
-  Object.keys(probDict5).forEach(key => {
-    if (!Object.keys(probDict).includes(key)) probDict[key] = {};
-    Object.keys(probDict5[key]).forEach(k => {
-      if (!Object.keys(probDict[key]).includes(k)) probDict[key][k] = 0;
-      probDict[key][k] += probDict5[key][k] * f5;
-    });
-  });
-
-  Object.keys(probDict6).forEach(key => {
-    if (!Object.keys(probDict).includes(key)) probDict[key] = {};
-    Object.keys(probDict6[key]).forEach(k => {
-      if (!Object.keys(probDict[key]).includes(k)) probDict[key][k] = 0;
-      probDict[key][k] += probDict6[key][k] * f6;
+    Object.keys(add).forEach(key => {
+      if (!Object.keys(probDict).includes(key)) probDict[key] = {};
+      Object.keys(add[key]).forEach(k => {
+        if (!Object.keys(probDict[key]).includes(k)) probDict[key][k] = 0;
+        probDict[key][k] += add[key][k] * weight;
+      });
     });
   });
 
@@ -180,13 +131,13 @@ function App() {
         );
       })}
 
-      {/* <button
+      <button
         onClick={() => {
-          setTitle(getProbs(ireVal, idaVal, itaVal, gerVal, polVal, rusVal));
+          setTitle(getProbs(mix));
         }}
       >
         MAKE A WORD
-      </button> */}
+      </button>
     </div>
   );
 }
