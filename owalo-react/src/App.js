@@ -105,7 +105,7 @@ let Bar = ({ name, val, setMix }) => {
         }
         step="2"
         type="range"
-        min="1"
+        min="3"
         max="99"
         value={val}
         onChange={e => {
