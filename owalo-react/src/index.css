@@ -12,6 +12,10 @@ body,
   box-sizing: border-box;
 }
 
+input::-moz-focus-outer {
+  border: 0;
+}
+
 body {
   padding: 0px;
   margin: 0;
@@ -23,6 +27,7 @@ body {
   background-image: url(./books.jpg);
   background-size: cover;
   background-position: 0% 100%;
+  background-attachment: fixed;
 }
 
 code {
