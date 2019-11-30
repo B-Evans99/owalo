@@ -52,7 +52,8 @@ let getWord = probDict => {
   return retStr;
 };
 
-let getProbs = mix => {
+let getProbs = mix => { 
+  console.log(mix);
   let probDict = {};
 
   let total = 0;
@@ -63,7 +64,7 @@ let getProbs = mix => {
 
   Object.keys(mix).forEach(key => {
     let add = require("./" + key + "Flavour.json");
-    let weight = Math.floor(parseInt(mix[key] - 1));
+    let weight = Math.floor(parseInt(mix[key]));
     weight = weight / total;
 
     Object.keys(add).forEach(key => {
@@ -74,7 +75,7 @@ let getProbs = mix => {
       });
     });
   });
-
+console.log(probDict);
   return getWord(probDict);
 };
 
@@ -105,7 +106,7 @@ let Bar = ({ name, val, setMix }) => {
         }
         step="2"
         type="range"
-        min="3"
+        min="1"
         max="99"
         value={val}
         onChange={e => {
