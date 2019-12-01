@@ -21,6 +21,7 @@ let getNext = (rot, probDict) => {
   let waterLevel = Math.random();
   let total = 0;
 
+  //for checking if there is rounding error and your total is soemthing like 0.997 but the waterlevel was 0.999
   let i = 0;
   while (waterLevel > total && i < keys.length - 1) {
     if (keys[i] == " ") {
@@ -33,7 +34,6 @@ let getNext = (rot, probDict) => {
       i += 1;
     }
   }
-
   return keys[i];
 };
 
@@ -52,8 +52,7 @@ let getWord = probDict => {
   return retStr;
 };
 
-let getProbs = mix => { 
-  console.log(mix);
+let getProbs = mix => {
   let probDict = {};
 
   let total = 0;
@@ -75,7 +74,9 @@ let getProbs = mix => {
       });
     });
   });
-console.log(probDict);
+
+  console.log(probDict);
+
   return getWord(probDict);
 };
 
@@ -129,47 +130,56 @@ function App() {
 
   let [tag, setTag] = useState("");
 
+  useEffect(() => {}, [title]);
+
+  let makeWord = e => {
+    setTitle(() => {
+      let title = getProbs(mix);
+      let tags = require("./tags.json");
+
+      let newTag = tags[Math.floor(tags.length * Math.random())];
+      newTag = newTag.replace("TK", title[0] + title.slice(1).toLowerCase());
+
+      setTag(newTag);
+
+      let fade = document.getElementById("tagline");
+      fade.style.animation = "none";
+      setTimeout(() => {
+        fade.style.animation = "";
+      }, 10);
+
+      return title;
+    });
+  };
+
   return (
-    <div className="holder">
-      <div className="App">
-        <h1>{title}</h1>
-        <h2 id="tagline">{tag}</h2>
+    <div>
+      <div className="header">
+        <h2>Owalo</h2>
       </div>
+      <div className="holder">
+        <div className="App">
+          <div className="word">
+            <h1>{title}</h1>
+            <h2 id="tagline">{tag}</h2>
+          </div>
+        </div>
 
-      <div className="touchBox">
-        {Object.keys(mix).map((flavour, i) => {
-          return (
-            <Bar key={i} name={flavour} val={mix[flavour]} setMix={setMix} />
-          );
-        })}
-
-        <button
-          onClick={e => {
-            setTitle(() => {
-              let title = getProbs(mix);
-              let tags = require("./tags.json");
-
-              let newTag = tags[Math.floor(tags.length * Math.random())];
-              newTag = newTag.replace(
-                "TK",
-                title[0] + title.slice(1).toLowerCase()
+        <div className="touchBox">
+          <div className="scrollyBox">
+            {Object.keys(mix).map((flavour, i) => {
+              return (
+                <Bar
+                  key={i}
+                  name={flavour}
+                  val={mix[flavour]}
+                  setMix={setMix}
+                />
               );
-
-              setTag(newTag);
-
-              let fade = document.getElementById("tagline");
-              fade.style.animation = "none";
-              setTimeout(() => {
-                fade.style.animation = "";
-              }, 10);
-
-              console.log(tag);
-              return title;
-            });
-          }}
-        >
-          MAKE A WORD
-        </button>
+            })}
+          </div>
+          <button onClick={e => makeWord(e)}>MAKE A WORD</button>
+        </div>
       </div>
     </div>
   );
