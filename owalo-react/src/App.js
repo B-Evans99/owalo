@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Component } from "react";
 import logo from "./logo.svg";
 import "./App.css";
+import { Route, NavLink, HashRouter } from "react-router-dom";
 
 function shuffle(array) {
   for (var i = array.length - 1; i > 0; i--) {
@@ -123,14 +124,12 @@ let Bar = ({ name, val, setMix }) => {
   );
 };
 
-function App() {
+let Main = () => {
   let [title, setTitle] = useState("");
 
   let [mix, setMix] = useState(setup());
 
   let [tag, setTag] = useState("");
-
-  useEffect(() => {}, [title]);
 
   let makeWord = e => {
     setTitle(() => {
@@ -153,35 +152,53 @@ function App() {
   };
 
   return (
-    <div>
-      <div className="header">
-        <h2>Owalo</h2>
-      </div>
-      <div className="holder">
-        <div className="App">
-          <div className="word">
-            <h1>{title}</h1>
-            <h2 id="tagline">{tag}</h2>
-          </div>
+    <div className="holder">
+      <div className="App">
+        <div className="word">
+          <h1>{title}</h1>
+          <h2 id="tagline">{tag}</h2>
         </div>
+      </div>
 
-        <div className="touchBox">
-          <div className="scrollyBox">
-            {Object.keys(mix).map((flavour, i) => {
-              return (
-                <Bar
-                  key={i}
-                  name={flavour}
-                  val={mix[flavour]}
-                  setMix={setMix}
-                />
-              );
-            })}
-          </div>
+      <div className="touchBox">
+        <div className="scrollyBox">
+          {Object.keys(mix).map((flavour, i) => {
+            return (
+              <Bar key={i} name={flavour} val={mix[flavour]} setMix={setMix} />
+            );
+          })}
+        </div>
+        <div className="btnHolder">
           <button onClick={e => makeWord(e)}>MAKE A WORD</button>
         </div>
       </div>
     </div>
+  );
+};
+
+let About = () => {
+  return <div>Hello this is the baout</div>;
+};
+
+function App() {
+  return (
+    <HashRouter>
+      <div>
+        <div className="header">
+          <h2>Owalo</h2>
+          <div className="navLinks">
+            <span>
+              <NavLink to="/">Home</NavLink>
+            </span>
+            <span>
+              <NavLink to="/about">About</NavLink>
+            </span>
+          </div>
+        </div>
+        <Route exact path="/" component={Main} />
+        <Route path="/about" component={About} />
+      </div>
+    </HashRouter>
   );
 }
 
