@@ -134,6 +134,9 @@ let Main = () => {
   let makeWord = e => {
     setTitle(() => {
       try {
+        if (!Object.values(mix).some(i => i != 0)) {
+          throw "Use the sliders to mix languages!";
+        }
         let title = getProbs(mix);
         let tags = require("./tags.json");
 
@@ -150,8 +153,12 @@ let Main = () => {
 
         return title;
       } catch (e) {
-        document.getElementById("tagline").innerHTML =
-          "Something went wrong! Try again!";
+        if (e.includes("languages")) {
+          document.getElementById("tagline").innerHTML = e;
+        } else {
+          document.getElementById("tagline").innerHTML =
+            "Uh oh, something went wrong! Try again, or refresh your page.";
+        }
         return "";
       }
     });
