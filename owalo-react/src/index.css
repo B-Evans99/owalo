@@ -29,6 +29,14 @@ body {
   background-attachment: fixed;
 }
 
+:active {
+  outline: none;
+}
+
+:focus {
+  outline: none;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
@@ -71,7 +79,7 @@ h1 {
 }
 
 button {
-  background: #9d1b15;
+  background: #48ac57;
   height: 70px;
   color: #fff;
   font-size: 30px;
@@ -79,15 +87,15 @@ button {
   text-shadow: 0px 0px 5px #084591;
   width: 80%;
   border-radius: 30px;
-  box-shadow: 0px 0px 5px #111, inset 0px -7px 12px #4d110a,
-    inset 0px 7px 12px #d73a16;
+  box-shadow: 0px 0px 5px #111, inset 0px -7px 12px #1e8a5b,
+    inset 0px 7px 12px #66cf68;
   overflow: hidden;
   width: 100%;
   transition: 0.2s ease-in-out;
 }
 
 button:hover {
-  background: #d73a16;
+  background: #1e8a5b;
   text-shadow: 0px 0px 5px #fff;
   cursor: pointer;
 }
@@ -101,6 +109,8 @@ button:hover {
   margin: auto;
   justify-content: flex-end;
   align-items: stretch;
+  background: url(./sliderBG.png);
+  color: #fff;
 }
 
 .App {
@@ -118,13 +128,13 @@ button:hover {
   justify-content: center;
   align-items: center;
   display: flex;
+  box-shadow: inset 0px 0px 40px #000;
 }
 
 .scrollyBox {
   height: calc(100vh - 70px);
   overflow-y: auto;
   width: 100%;
-  padding-bottom: 200px;
 }
 
 .flavourBox {
@@ -136,33 +146,42 @@ button:hover {
   margin-bottom: 200px;
 }
 
+.flavourBox:first-of-type {
+  margin-top: 50px;
+}
+
 .flavourName {
   width: 120px;
   text-align: right;
   padding: 0px 17px 0px 0px;
-  color: #fff;
+  color: #aaa;
   font-weight: bold;
 }
 
 .header {
   height: 70px;
-  line-height: 70px;
-  padding: 0px 70px 0px 30px;
+  line-height: 50px;
+  padding: 8px 70px 8px 30px;
   color: #fff;
-  background: url(./headerBG.png);
+  background: linear-gradient(to right, #555, #333);
   background-size: cover;
   background-repeat: no-repeat;
   width: 100%;
   z-index: 50;
-  position: relative;
-  border-bottom: 5px solid #fdb076;
+  position: sticky;
+  top: 0;
+  border-bottom: 5px solid #333;
   display: flex;
   flex-direction: row;
 }
 
 .header h2 {
+  color: #ccc;
   font-size: 30px;
-  text-shadow: 0px 0px 5px #f5abaa, 0px 0px 15px #f5abaa;
+  background: #fff;
+  box-shadow: 0px 0px 7px #777;
+  padding: 0px 27px;
+  border-radius: 10px;
 }
 
 .navLinks {
@@ -172,8 +191,41 @@ button:hover {
   justify-content: flex-end;
 }
 
-.navLinks span {
-  padding: 0px 10px;
+.navLinks span a {
+  padding: 0px 15px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+  text-shadow: 0px 2px 5px #083477;
+}
+
+.navLinks span a:hover {
+  color: #f1e2ea;
+}
+
+.aboutPage {
+  background: radial-gradient(at 50% 20%, #fdb076, #fdcf8d, #f6dfe1);
+  background-attachment: fixed;
+  min-height: calc(100vh - 70px);
+  font-size: 1.2em;
+  color: #014e5b;
+}
+
+.aboutContent {
+  max-width: 600px;
+  margin: auto;
+  padding: 40px 0px;
+  padding-bottom: 200px;
+}
+
+.aboutContent h3 {
+  color: #fff;
+  text-shadow: 0px 0px 5px #666;
+}
+
+.aboutContent p {
+  padding: 12px 0px 50px 20px;
 }
 
 /* SLIDERS */

@@ -177,7 +177,61 @@ let Main = () => {
 };
 
 let About = () => {
-  return <div>Hello this is the baout</div>;
+  return (
+    <div className="aboutPage">
+      <div className="aboutContent">
+        <h3>Why is this a thing?</h3>
+        <p>
+          I'm Bronwen Evans and I'm in my third year of Computing Science at
+          Thompson Rivers University, Canada. I made (the self-named) Owalo as a
+          tool for myself because I was tired of "fantasy" name generators that
+          spat out <i>John Nightwhisper</i> and <i>Lucy Pathseer</i>. My friends
+          started using it for their writing projects and D&D characters, and I
+          figured there might be other people out there as frustrated as we
+          were. So here we are.
+        </p>
+        <h3>This thing could be better.</h3>
+        <p>
+          Excellent news, brave wanderer! This is an open source project. Submit
+          any requests as{" "}
+          <a href="https://github.com/B-Evans99/owalo/issues">
+            issues on the Github.
+          </a>{" "}
+          (Or, if you are an unnaturally kindhearted person, any bug reports.)
+        </p>
+        <h3>I have a language you should add!</h3>
+        <p>
+          <a href="https://github.com/B-Evans99/owalo/issues">
+            Let me know about it!
+          </a>
+        </p>
+        <h3>Owalo was the best name it could give you?</h3>
+        <p>
+          In my heart, the little engine is actually called
+          BOWHAMSOURTHERINIMOF, which it proudly declared after eating the
+          communist manifesto.
+        </p>
+        <h3>
+          BOWHAMSOURTHERINIMOF is a good word. Why doesn't it make words like
+          BOWHAMSOURTHERINIMOF!
+        </h3>
+        <p>
+          Right now, Owalo is optimized for consistency and mass appeal. If
+          there's an interest shown in having a "this train has no brakes"
+          version of Owalo, I'll add it.
+        </p>
+        <h3>I want to hear about other things you make.</h3>
+        <p>
+          Follow me on <a href="https://github.com/B-Evans99">Github</a> or{" "}
+          <a href="https://twitter.com/BronwenEvans11">Twitter</a>.
+        </p>
+        <p>
+          (No offense meant to anyone with characters named John Nightwhisper or
+          Lucy Pathseer.)
+        </p>
+      </div>
+    </div>
+  );
 };
 
 function App() {
