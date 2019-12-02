@@ -103,7 +103,6 @@ button {
 }
 
 button:hover {
-  background: #1e8a5b;
   text-shadow: 0px 0px 5px #fff;
   cursor: pointer;
 }
