@@ -14,40 +14,68 @@ function shuffle(array) {
 
 let getNext = (rot, probDict) => {
   let keys = Object.keys(probDict);
-  shuffle(keys);
-  if (keys.includes(" ")) {
-    keys.splice(keys.indexOf(" "), 1);
-    keys.unshift(" ");
-  }
-  let waterLevel = Math.random();
-  let total = 0;
 
-  //for checking if there is rounding error and your total is soemthing like 0.997 but the waterlevel was 0.999
-  let i = 0;
-  while (waterLevel > total && i < keys.length - 1) {
-    if (keys[i] == " ") {
-      rot = rot - 4 > 0 ? rot - 4 : 0;
-      total += probDict[keys[i]] * rot * 1.14;
-    } else {
-      total += probDict[keys[i]];
+  if (keys.length > 0) {
+    shuffle(keys);
+    if (keys.includes(" ")) {
+      keys.splice(keys.indexOf(" "), 1);
+      keys.unshift(" ");
     }
-    if (waterLevel > total) {
-      i += 1;
+    let waterLevel = Math.random();
+    let total = 0;
+
+    //for checking if there is rounding error and your total is soemthing like 0.997 but the waterlevel was 0.999
+    let i = 0;
+    while (waterLevel > total && i < keys.length - 1) {
+      if (keys[i] == " ") {
+        rot = rot - 4 > 0 ? rot - 4 : 0;
+        total += probDict[keys[i]] * rot * 1.14;
+      } else {
+        total += probDict[keys[i]];
+      }
+      if (waterLevel > total) {
+        i += 1;
+      }
     }
+    return keys[i];
+  } else {
+    return "";
   }
-  return keys[i];
 };
 
 let getWord = probDict => {
   let keys = Object.keys(probDict[" "]);
+  keys = keys.filter(key => probDict[" "][key] != 0);
+
+  console.log("KEYS " + keys);
+
   let seed = keys[Math.floor(Math.random() * keys.length)];
   let retStr = seed;
 
   let next = getNext(retStr.length, probDict[retStr.charAt(retStr.length - 1)]);
-
+  let last = "";
+  let repeat = 1;
   while (next != " ") {
+    let filtered = JSON.parse(
+      JSON.stringify(probDict[retStr.charAt(retStr.length - 1)])
+    );
+
+    Object.keys(filtered).forEach(key => {
+      if (filtered[key] == 0) delete filtered[key];
+    });
+
     retStr += next;
-    next = getNext(retStr.length, probDict[retStr.charAt(retStr.length - 1)]);
+    last = next;
+
+    if (repeat > 0) {
+      delete filtered[last];
+    }
+
+    next = getNext(retStr.length, filtered);
+
+    repeat = next == last ? repeat + 1 : 0;
+
+    console.log(repeat);
   }
 
   return retStr;
@@ -151,12 +179,13 @@ let Main = () => {
 
         return title;
       } catch (e) {
-        if (e.includes("languages")) {
+        if (e.type == String && e.includes("languages")) {
           document.getElementById("tagline").innerHTML = e;
         } else {
           document.getElementById("tagline").innerHTML =
             "Uh oh, something went wrong! Try again, or refresh your page.";
         }
+        throw e;
         return "";
       }
     });
