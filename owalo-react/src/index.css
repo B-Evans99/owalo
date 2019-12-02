@@ -384,6 +384,26 @@ button:hover {
     z-index: 70;
   }
 
+  .touchBox {
+    flex: 1;
+    height: calc(100vh - 180px - 50px - 44px);
+    position: fixed;
+    top: 230px;
+  }
+
+  .flavourBox {
+    padding: 12px 17px;
+  }
+
+  .flavourBox:first-of-type {
+    margin-bottom: 50px;
+  }
+
+  .flavourName {
+    padding: 0px 8px 0px 20px;
+    width: 40%;
+  }
+
   .scrollyBox {
     height: auto;
   }
