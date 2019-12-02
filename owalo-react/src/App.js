@@ -133,21 +133,27 @@ let Main = () => {
 
   let makeWord = e => {
     setTitle(() => {
-      let title = getProbs(mix);
-      let tags = require("./tags.json");
+      try {
+        let title = getProbs(mix);
+        let tags = require("./tags.json");
 
-      let newTag = tags[Math.floor(tags.length * Math.random())];
-      newTag = newTag.replace("TK", title[0] + title.slice(1).toLowerCase());
+        let newTag = tags[Math.floor(tags.length * Math.random())];
+        newTag = newTag.replace("TK", title[0] + title.slice(1).toLowerCase());
 
-      setTag(newTag);
+        setTag(newTag);
 
-      let fade = document.getElementById("tagline");
-      fade.style.animation = "none";
-      setTimeout(() => {
-        fade.style.animation = "";
-      }, 10);
+        let fade = document.getElementById("tagline");
+        fade.style.animation = "none";
+        setTimeout(() => {
+          fade.style.animation = "";
+        }, 10);
 
-      return title;
+        return title;
+      } catch (e) {
+        document.getElementById("tagline").innerHTML =
+          "Something went wrong! Try again!";
+        return "";
+      }
     });
   };
 
