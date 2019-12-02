@@ -76,8 +76,6 @@ let getProbs = mix => {
     });
   });
 
-  console.log(probDict);
-
   return getWord(probDict);
 };
 
@@ -108,7 +106,7 @@ let Bar = ({ name, val, setMix }) => {
         }
         step="2"
         type="range"
-        min="1"
+        min="0"
         max="99"
         value={val}
         onChange={e => {
