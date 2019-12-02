@@ -1,6 +1,7 @@
 {
   "name": "owalo-react",
   "version": "0.1.0",
+  "homepage": "http://owalo-words.com/",
   "private": true,
   "dependencies": {
     "node-dir": "^0.1.17",
