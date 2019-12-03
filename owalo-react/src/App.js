@@ -121,7 +121,9 @@ let setup = () => {
 let Bar = ({ name, val, setMix, style }) => {
   return (
     <div className="flavourBox">
-      <span className="flavourName">{name}</span>
+      <span className="flavourName">
+        {name[0].toUpperCase() + name.slice(1)}
+      </span>
       <input
         className={
           val > 90
@@ -222,7 +224,7 @@ let Main = () => {
             return (
               <Bar
                 key={i}
-                name={flavour[0].toUpperCase() + flavour.slice(1)}
+                name={flavour}
                 val={mix[flavour]}
                 setMix={setMix}
                 style={i % 7 == 0 ? slider1 : i % 7 == 3 ? slider2 : slider3}
