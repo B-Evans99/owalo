@@ -129,10 +129,8 @@ let Bar = ({ name, val, setMix, style }) => {
           val > 90
             ? "slider fullActivation"
             : val > 40
-            ? "slider highActivation"
-            : val > 12
-            ? "slider midActivation"
-            : "slider lowActivation"
+              ? "slider highActivation"
+              : val > 12 ? "slider midActivation" : "slider lowActivation"
         }
         style={style}
         step="2"
@@ -213,8 +211,12 @@ let Main = () => {
     <div className="holder">
       <div className="App">
         <div className="word">
-          <h1>{title}</h1>
-          <h2 id="tagline">{tag}</h2>
+          <h1>
+            {title}
+          </h1>
+          <h2 id="tagline">
+            {tag}
+          </h2>
         </div>
       </div>
 
