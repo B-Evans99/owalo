@@ -118,7 +118,7 @@ let setup = () => {
   return retMix;
 };
 
-let Bar = ({ name, val, setMix }) => {
+let Bar = ({ name, val, setMix, style }) => {
   return (
     <div className="flavourBox">
       <span className="flavourName">{name}</span>
@@ -132,6 +132,7 @@ let Bar = ({ name, val, setMix }) => {
             ? "slider midActivation"
             : "slider lowActivation"
         }
+        style={style}
         step="2"
         type="range"
         min="0"
@@ -179,16 +180,31 @@ let Main = () => {
 
         return title;
       } catch (e) {
-        if (e.type == String && e.includes("languages")) {
+        if (e == "Use the sliders to mix languages!") {
           document.getElementById("tagline").innerHTML = e;
         } else {
           document.getElementById("tagline").innerHTML =
             "Uh oh, something went wrong! Try again, or refresh your page.";
         }
-        throw e;
         return "";
       }
     });
+  };
+
+  //a bunch of slightly different sliders.. i was getting lost in the sauce of identical parallel lines
+  const slider1 = {
+    backgroundImage:
+      "linear-gradient(90deg, rgba(10,67,134,1) 10%, rgba(0,224,196,1) 35%, rgba(0,231,140,1) 61%, rgba(243,255,213,1) 100%)"
+  };
+
+  const slider2 = {
+    backgroundImage:
+      "linear-gradient(90deg, rgba(10,67,134,1) 10%, rgba(0,162,224,1) 35%, rgba(0,231,214,1) 63%, rgba(213,255,245,1) 100%)"
+  };
+
+  const slider3 = {
+    backgroundImage:
+      "linear-gradient(90deg, rgba(10,67,134,1) 10%, rgba(0,162,224,1) 39%, rgba(0,231,225,1) 60%, rgba(243,255,213,1) 100%)"
   };
 
   return (
@@ -204,7 +220,13 @@ let Main = () => {
         <div className="scrollyBox">
           {Object.keys(mix).map((flavour, i) => {
             return (
-              <Bar key={i} name={flavour} val={mix[flavour]} setMix={setMix} />
+              <Bar
+                key={i}
+                name={flavour}
+                val={mix[flavour]}
+                setMix={setMix}
+                style={i % 7 == 0 ? slider1 : i % 7 == 3 ? slider2 : slider3}
+              />
             );
           })}
         </div>
@@ -222,13 +244,11 @@ let About = () => {
       <div className="aboutContent">
         <h3>Why is this a thing?</h3>
         <p>
-          I'm Bronwen Evans and I'm in my third year of Computing Science at
-          Thompson Rivers University, Canada. I made (the self-named) Owalo as a
-          tool for myself because I was tired of "fantasy" name generators that
-          spat out <i>John Nightwhisper</i> and <i>Lucy Pathseer</i>. My friends
-          started using it for their writing projects and D&D characters, and I
-          figured there might be other people out there as frustrated as we
-          were. So here we are.
+          I made (the self-named) Owalo as a tool for myself a couple years ago
+          because I was tired of "fantasy" name generators that spat out{" "}
+          <i>John Nightwhisper</i> and <i>Lucy Pathseer</i>. My friends started
+          using it for their writing projects and D&D characters, and I figured
+          there might be other people out there as frustrated as we were.
         </p>
         <h3>This thing could be better.</h3>
         <p>

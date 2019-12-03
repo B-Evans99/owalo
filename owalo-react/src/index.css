@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css?family=Fira+Sans:400,500|Pompiere&display=swap&subset=latin-ext");
+
 html,
 body,
 #root {
@@ -35,6 +37,7 @@ body {
   background-size: cover;
   background-position: 0% 100%;
   background-attachment: fixed;
+  font-family: "Fira Sans";
 }
 
 :active {
@@ -55,6 +58,8 @@ h1 {
   text-shadow: 0px 0px 5px #b57438;
   margin-bottom: 10px;
   font-size: 65px;
+  font-weight: 400;
+  font-family: "Pompiere", serif;
 }
 
 .App h2 {
@@ -63,7 +68,7 @@ h1 {
   color: #fff;
   text-shadow: 0px 0px 5px #b57438;
   font-size: 18px;
-  width: 400px;
+  max-width: 400px;
   margin: auto;
 }
 
@@ -79,18 +84,19 @@ h1 {
 }
 
 .btnHolder {
-  width: 300px;
+  width: 500px;
   box-sizing: border-box;
   position: absolute;
-  bottom: 20px;
-  right: 30px;
+  bottom: 40px;
+  text-align: center;
+  right: 0px;
 }
 
 button {
   background: #48ac57;
   height: 70px;
   color: #fff;
-  font-size: 30px;
+  font-size: 20px;
   line-height: 70px;
   text-shadow: 0px 0px 5px #084591;
   width: 80%;
@@ -98,7 +104,7 @@ button {
   box-shadow: 0px 0px 5px #111, inset 0px -7px 12px #1e8a5b,
     inset 0px 7px 12px #66cf68;
   overflow: hidden;
-  width: 100%;
+  width: 60%;
   transition: 0.2s ease-in-out;
 }
 
@@ -112,11 +118,10 @@ button:hover {
   flex-wrap: wrap;
   flex-direction: row;
   background: #151418;
-  box-shadow: inset 0px 0px 27px #000;
   margin: auto;
   justify-content: flex-end;
   align-items: stretch;
-  background: url(./sliderBG.png);
+  background: rgb(17, 52, 80);
   color: #fff;
 }
 
@@ -135,7 +140,7 @@ button:hover {
   justify-content: center;
   align-items: center;
   display: flex;
-  box-shadow: inset 0px 0px 40px #000;
+  box-shadow: inset 0px 0px 40px rgb(16, 84, 187);
 }
 
 .scrollyBox {
@@ -147,7 +152,7 @@ button:hover {
 }
 
 .flavourBox {
-  padding: 22px 20px;
+  padding: 18px 20px;
   display: flex;
 }
 
@@ -163,8 +168,7 @@ button:hover {
   width: 120px;
   text-align: right;
   padding: 0px 17px 0px 0px;
-  color: #aaa;
-  font-weight: bold;
+  color: rgb(72, 148, 248);
 }
 
 .header {
@@ -172,14 +176,14 @@ button:hover {
   line-height: 50px;
   padding: 8px 70px 8px 30px;
   color: #fff;
-  background: linear-gradient(to right, #555, #333);
+  background: linear-gradient(to right, rgb(228, 72, 106), rgb(156, 39, 94));
   background-size: cover;
   background-repeat: no-repeat;
   width: 100%;
   z-index: 50;
   position: sticky;
   top: 0;
-  border-bottom: 5px solid #333;
+  border-bottom: 5px solid rgb(228, 72, 106);
   display: flex;
   flex-direction: row;
 }
@@ -230,7 +234,7 @@ button:hover {
 
 .aboutContent h3 {
   color: #fff;
-  text-shadow: 0px 0px 5px #666;
+  text-shadow: 0px 0px 5px #b57438;
 }
 
 .aboutContent p {
@@ -246,15 +250,19 @@ button:hover {
   width: 100%;
   background-image: linear-gradient(
     to right,
-    #0a4386 25%,
-    #00a1cf 50%,
-    #23d5eb,
-    #fff
+    #0a4386 10%,
+    #4463eb,
+    #25f1f8,
+    rgb(255, 255, 255)
   );
   border-radius: 40px;
   box-shadow: 0px 0px 5px #393f6f;
   transition: 0.2s ease-in-out;
   margin: auto;
+}
+
+.slider:hover {
+  cursor: pointer;
 }
 
 .slider::-webkit-slider-thumb {
@@ -335,7 +343,7 @@ button:hover {
   -webkit-appearance: none;
   appearance: none;
   height: 25px;
-  background: #fbe1ce;
+  background: #f8fbce;
   border: 2px solid #fff;
   border-radius: 20px;
   width: 25px;
