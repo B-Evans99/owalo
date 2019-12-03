@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Fira+Sans:400,500|Pompiere&display=swap&subset=latin-ext");
+@import url('https://fonts.googleapis.com/css?family=East+Sea+Dokdo|Yantramanav:300&display=swap');
 
 html,
 body,
@@ -27,6 +27,7 @@ input::-moz-focus-outer {
 }
 
 body {
+  font-size:2em;
   padding: 0px;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -37,7 +38,7 @@ body {
   background-size: cover;
   background-position: 0% 100%;
   background-attachment: fixed;
-  font-family: "Fira Sans";
+  font-family: "East Sea Dokdo";
 }
 
 :active {
@@ -57,9 +58,7 @@ h1 {
   color: #fff;
   text-shadow: 0px 0px 5px #b57438;
   margin-bottom: 10px;
-  font-size: 65px;
-  font-weight: 400;
-  font-family: "Pompiere", serif;
+  font-family: "Yantramanav", serif;
 }
 
 .App h2 {
@@ -67,9 +66,10 @@ h1 {
   opacity: 0;
   color: #fff;
   text-shadow: 0px 0px 5px #b57438;
-  font-size: 18px;
   max-width: 400px;
   margin: auto;
+  font-size:2.4rem;
+  font-weight:200;
 }
 
 @keyframes fadeIn {
@@ -117,11 +117,10 @@ button:hover {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  background: #151418;
+  background: #082a63;
   margin: auto;
   justify-content: flex-end;
   align-items: stretch;
-  background: rgb(17, 52, 80);
   color: #fff;
 }
 
@@ -152,7 +151,11 @@ button:hover {
 }
 
 .flavourBox {
-  padding: 18px 40px;
+  padding: 0px 40px;
+}
+
+.flavourBox:nth-child(odd){
+  background:#051f9644;
 }
 
 .flavourBox:first-of-type {
@@ -164,9 +167,6 @@ button:hover {
 }
 
 .flavourName {
-  width: 120px;
-  display: inline-block;
-  padding: 0px 17px 8px 0px;
   color: rgb(72, 148, 248);
 }
 
@@ -189,7 +189,7 @@ button:hover {
 
 .header h2 {
   color: #ccc;
-  font-size: 30px;
+  font-size: 1.5em;
   background: #fff;
   box-shadow: 0px 0px 7px #777;
   padding: 0px 27px;
@@ -207,8 +207,6 @@ button:hover {
   padding: 0px 15px;
   color: #fff;
   text-decoration: none;
-  font-size: 18px;
-  font-weight: bold;
   text-shadow: 0px 2px 5px #083477;
 }
 
@@ -374,10 +372,6 @@ button:hover {
     padding: 8px 10px;
   }
 
-  .header h2 {
-    font-size: 20px;
-  }
-
   .App {
     position: -webkit-sticky;
     position: sticky;
@@ -415,7 +409,6 @@ button:hover {
   }
 
   .App h2 {
-    font-size: 14px;
     width: auto;
   }
 
