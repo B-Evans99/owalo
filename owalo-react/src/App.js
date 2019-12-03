@@ -222,7 +222,7 @@ let Main = () => {
             return (
               <Bar
                 key={i}
-                name={flavour}
+                name={flavour[0].toUpperCase() + flavour.slice(1)}
                 val={mix[flavour]}
                 setMix={setMix}
                 style={i % 7 == 0 ? slider1 : i % 7 == 3 ? slider2 : slider3}
