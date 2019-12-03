@@ -93,10 +93,11 @@ h1 {
 }
 
 button {
+  font-family:"East Sea Dokdo";
   background: #48ac57;
   height: 70px;
   color: #fff;
-  font-size: 20px;
+  font-size: 3rem;
   line-height: 70px;
   text-shadow: 0px 0px 5px #084591;
   width: 80%;
