@@ -37,8 +37,9 @@ try:
     # print(totals)
     print(json.dumps(totals))
 
-    f = open(fname[:-4]+"Flavour.json", "w")
+    f = open(fname[:-4]+"Flavour.json", "w", encoding='utf-8', )
     f.write(json.dumps(totals))
 
-except:
+except Exception as e:
     print("Please provide a file as an argument.")
+    print(e)
