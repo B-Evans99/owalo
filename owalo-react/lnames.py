@@ -4,7 +4,7 @@ import sys
 try:
     fname = sys.argv[1]
 
-    with open(fname) as source:
+    with open(fname, encoding="utf-8") as source:
         read = source.read().upper().split()
 
     totals = {}
