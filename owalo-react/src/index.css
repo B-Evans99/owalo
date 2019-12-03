@@ -152,8 +152,7 @@ button:hover {
 }
 
 .flavourBox {
-  padding: 18px 20px;
-  display: flex;
+  padding: 18px 40px;
 }
 
 .flavourBox:first-of-type {
@@ -166,8 +165,8 @@ button:hover {
 
 .flavourName {
   width: 120px;
-  text-align: right;
-  padding: 0px 17px 0px 0px;
+  display: inline-block;
+  padding: 0px 17px 8px 0px;
   color: rgb(72, 148, 248);
 }
 
